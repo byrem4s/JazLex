@@ -12,8 +12,8 @@ body{
 .container{
     font-family: 'Roboto', sans-serif;
     width: 100%;
-    height: 800px;
-    background-image: url('/images/fondo__home.png');
+    height: 1200px;
+    background-image: url('/public_html/images/home.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -21,7 +21,7 @@ body{
 }
 
 .nav{
-    max-width: 1400px;
+    /* max-width: 1400px; */
     margin: 0 auto;
 }
 .nav{
@@ -70,41 +70,77 @@ body{
     cursor: pointer;
     display: none;              /*para que cuando este en la version destok no aparezca*/
 }
-/*.curveado{
-    width: 100%;
-    margin-top: 14%;
-} */
- .servicio1{  
+
+.main{
+    margin-top: 100px;
     width: 100%;
     height: auto;
 }
-.text{
+.identy{
     text-align: center;
 }
-.parrafo{
-    text-align: left;
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.8572;
-    color: #575250;
-    padding: 30px 20px 0 20px;
+.container-identy{
+    padding: 10px 20%;
+}
+.identy-text{
+    font-family: "Raleway", sans-serif;
+    color:#003399;
+    font-size: 55px;
+    font-weight: 400;
+    line-height: 70px;
 }
 
+
+
+.action{  
+    margin-top: 200px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+.action-container{
+    width: 90%;
+    display: flex;
+}
+.imagen1{
+    height: 100%;
+    width: 70%;
+    /* width: 50%; */
+    background-image: url('images/actionx600.jpg');
+    /* background-position: center center; */
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+}
+ .text h2{
+    font-family: "Roboto", sans-serif ;
+    font-weight: 700;
+    font-size: 36px;
+    
+}
+.action-text{
+    padding: 20px 0;
+    font-size: 20px;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+}
+.text a{
+    padding: 0.75rem 1.5rem;
+    background-color:#004aad ;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+    /*
 .subtitulo {
     padding-bottom: 5px;
     font-size: 1.8em;
     font-family: 'Times New Roman', Times, serif;
     text-wrap: balance;
-}
+} */
 
 
-.imagen1{
-    margin: auto;
-    height: 400px;
-    width: 100%;
-    background-image: url('images/servicio.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-}
 
 /*----------------------------------------------------------------------seccion attachment------------------------------------------------------------------------------*/
 .attachment{
@@ -199,16 +235,21 @@ body{
     padding-left: 50px;
     padding-right: 50px;
 }
+.parrafo{
+    color: #0c0c0c;
+    text-align: justify;
+    background: transparent;
+    line-height: 1.7em;
+    font-weight: 500;
+}
 
 /*--------------------------------------------------------------------------FOOTER----------------------------------------------------------------------------------------*/
 
 footer{
     height: auto;
     width: 100%;
-    /*max-width: 1800px; */
-    background-color: #fff;
     margin-top: 20px;
-    background-color: rgba(189, 195, 199, 0.2);
+    background-color: #0000006b;
 }
 
 #content_footer{
@@ -220,7 +261,6 @@ footer{
     grid-template-columns: 50% 50%;
     grid-template-areas: 'contact about';
     display: grid;
-    background-color: #7e7d7d;
 }
 
 /*sub grid*/
@@ -230,16 +270,13 @@ footer{
                          'img4 img5 img6';
     grid-template-rows: auto auto;
     grid-template-columns: 33.333% 33.333% 33.333%;
-    /*border: 1px solid black;*/
 }
 
 .c1{
     grid-area: contact;
-    /*border-right: 2px solid rgb(255, 255, 255);*/
 }
 .c2{
    grid-area: about;
-   /*border-right: 2px solid rgb(255, 255, 255);*/
    padding-right: 110px;
 }
 .sub_caja4{ 
@@ -251,10 +288,6 @@ footer{
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.19), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
 }
-
-/*.img_zoom:hover{
-    transform: scale(1.5);
-}*/
 
  .c5{
      background-color: white;
@@ -303,6 +336,7 @@ a{
 }
 .caja p{
     color: white;
+    font-size: 20px;
     margin-bottom: 10px;
     padding: 0 10px 10px;
     line-height: 1.2;
@@ -316,7 +350,6 @@ a{
 .c1 input{
     margin-bottom: 20px;
     margin-left: 5px;
-    /*background-color: white;*/
     background-color: lightgray;
     color: black;
     padding-left: 5px;
@@ -419,4 +452,3 @@ a{
         padding-bottom: 80px;
     }
 }
-
