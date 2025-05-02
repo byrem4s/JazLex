@@ -17,11 +17,11 @@
     <title>JazLex</title>
     <link rel = 'stylesheet' href="style.css">
    <!-- <link rel="stylesheet" href="media.css">  -->
-    <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="/images/image.png">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+   <link rel="shortcut icon" href="/assets/image.png">
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
+   <script src="https://kit.fontawesome.com/294531cf64.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -55,22 +55,62 @@
                 <p class="action-text">Whether you need to maintain your current infrastructure or expand to meet new demands, our team is ready to help.</p>
                 <p class="action-text">We specialize in automation integration using industry-leading PLC solutions from Rockwell, Schneider, Siemens, Omron, ABB, and more — ensuring seamless performance and scalability for your projects.</p>
     
-                <a href="#contact">Get in Touch</a>
+                <a href="#form">Get in Touch</a>
             </div>
         </div>
     </section>
-    <section class="attachment"> 
-        
-        <div class="cont-img">
-            <div class="contenido">
-                <h2> Contact Us</h2>
-                <h3>To ensure effective delivery of a project: proper planning, delivery, and monitoring are required.</h3>
-                <h3>Make your project possible</h3>
-                <div class="cont-boton">
-                    <a href="mailto:rnizamuddin@jazlexcs.com">
-                        <button>Contact Us</button>
-                    </a>
-                </div>  
+    <section class="form"> 
+        <div class="form-cont">
+            
+            <div class="foco" id="three-container">
+                <div class="contenedor">
+                    <a href="tel:365-341-0189" target="_blank"><img src="assets/phone.png" alt="Icono 1" class="icono"></a>
+                    <a href="mailto:rnizamuddin@jazlexcs.com" target="_blank"><img src="assets/mail.png" alt="Icono 2" class="icono"></a>
+                    <a href="https://www.linkedin.com/company/jazlexcs/posts/?feedView=all" target="_blank"><img src="assets/linkedin.png" alt="Icono 3" class="icono"></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contacto">
+                    <h3>Ready to power up your operations?
+                        Let’s talk about how we can help bring your next project to life.</h3>
+                </div>
+                <form action="/submit-contact" method="POST">
+    
+                    <!-- Name Field -->
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name" />
+                
+                    <!-- Email Field -->
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email" />
+                
+                    <!-- Company Field -->
+                    <label for="company">Company:</label>
+                    <input type="text" id="company" name="company" placeholder="Enter your company name" />
+                
+                    <!-- Phone Field -->
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
+                
+                    <!-- Message Field -->
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required placeholder="Enter your message" rows="4"></textarea>
+                    
+                    <!-- Consent Checkboxes -->
+                    <div>
+                      <input type="checkbox" id="consent1" name="consent1" required />
+                      <label for="consent1">I agree to the <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</label>
+                    </div>
+                
+                    <div>
+                      <input type="checkbox" id="consent2" name="consent2" />
+                      <label for="consent2">I consent to receiving</label>
+                      <!-- I consent to receiving communications related to my inquiry. -->
+                    </div>
+                
+                    <!-- Submit Button -->
+                    <button type="submit">Send Message</button>
+                  </form>
             </div>
         </div>
     </section>
@@ -88,53 +128,34 @@
             </div>
         </div>
     </section>
+    
+    <div class="carousel">
+        <div class="group">
+            <div class="card"><img src="assets/certificado.png" alt="Imagen 1"></div>
+            <div class="card"><img src="assets/certificado1.png" alt="Imagen 2"></div>
+            <div class="card"><img src="assets/certificado2.png" alt="Imagen 3"></div>
+            <div class="card"><img src="assets/certificado4.jpg" alt="Imagen 4"></div>
+            <div class="card"><img src="assets/certificado5.png" alt="Imagen 5"></div>
+        </div>
+        <div aria-hidden class="group">
+            <div class="card"><img src="assets/certificado.png" alt="Imagen 1"></div>
+            <div class="card"><img src="assets/certificado1.png" alt="Imagen 2"></div>
+            <div class="card"><img src="assets/certificado2.png" alt="Imagen 3"></div>
+            <div class="card"><img src="assets/certificado4.jpg" alt="Imagen 4"></div>
+            <div class="card"><img src="assets/certificado5.png" alt="Imagen 5"></div>
+        </div>
+    </div>
 
-        <footer>
+
+    <footer>
         <div id="content_footer">
-            <div class="grid-item">
-                <div class="caja c1">
-                    <h2 class="sub-footer"> CONTACT</h2>
-                    <a href="mailto:rnizamuddin@jazlexcs.com">
-                        <input type="text" value ="rnizamuddin@jazlexcs.com" readonly></a>
-                        <button><i class="fa fa-copy btn_copy" id="btn1" style="font-size:15px;"></i></button>
-                        <br>
-                    <a href="tel: 365-341-0189">    
-                        <input type="tel" value="365-341-0189" readonly></a>
-                        <button><i class="fa fa-copy btn_copy" id="btn2" style="font-size:15px;"></i></button>
-                </div>
-                <div class="caja c2 content_footer_fil1">
-                    <h2 class="sub-footer">ABOUT US</h2>
-                    <p>We offer general services for your company, from automation and integration, engineering power studies to project management
-                        working with leading PLC suppliers.</p>
-                </div>
-            </div>
-            <div class="grid-item subgrid">  
-                <div class="sub_caja4 c4_1">
-                    <img src="images/certificado4.1-footer.png" alt="certificado 1" class="img_zoom">
-                </div>
-                <div class="sub_caja4 c4_2">
-                    <img src="images/certificado3-footer.png" alt="certificado 2" class="img_zoom">
-                </div>
-                <div class="sub_caja4 c4_3">
-                    <img src="images/certificado5.1-footer.png" alt="certificado 3" class="img_zoom">
-                </div>
-                <div class="sub_caja4 c4_4">
-                    <img src="images/certificado2-footer.png" alt = "certificado 4" class="img_zoom">
-                </div>
-                <div class="sub_caja4 c4_5">
-                    <img src="images/certificado1-footer.png " alt="certificado 5" class="img_zoom">
-                </div>
-                <div class="c4_6">
-                </div> 
-            </div> 
-            <div class="grid-item">
-                <div class="caja c6">
-                    <small>Copyright &copy;2025 <b>JazLex</b></small>
-                </div>
+            <div class="copy">
+                <small>Copyright &copy;2025 <b>JazLex</b></small>
             </div>
         </div>
     </footer>
-
-    <script src="script.js" defer></script>
+    <script src="src/threeScene.js" type="module" defer></script>
+    <script src="src/ui.js" type="module"></script>
+    <script src="src/main.js" type="module"></script>
 </body>
 </html>
