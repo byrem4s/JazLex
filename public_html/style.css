@@ -84,7 +84,7 @@ body{
 }
 .identy-text{
     font-family: "Raleway", sans-serif;
-    color:#003399;
+    color:#504f4f;
     font-size: 55px;
     font-weight: 400;
     line-height: 70px;
@@ -98,17 +98,22 @@ body{
     justify-content: center;
 }
 .action-container{
-    width: 90%;
+    width: 100%;
     display: flex;
+    margin: 0 50px;
 }
 .imagen1{
     height: 100%;
-    width: 70%;
-    /* width: 50%; */
+    width: 60%;
     background-image: url('assets/actionx600.jpg');
-    /* background-position: center center; */
-    /* background-size: cover; */
+    background-position: center center;
+    background-size: cover;
     background-repeat: no-repeat;
+    border-radius: 8px;
+}
+.text{
+    width: 60%;
+    margin-left: 30px;
 }
  .text h2{
     font-family: "Roboto", sans-serif ;

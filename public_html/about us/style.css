@@ -8,117 +8,153 @@ body{
     background-color: rgb(255, 255, 255);
     line-height: 1;
 }
-.container{
+/* Estilos base */
+.container {
     font-family: 'Roboto', sans-serif;
+    background-color: white;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-nav{
+nav {
     width: 100%;
-    height: auto;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
 }
 
-.img_header{
+.img_header {
     margin-left: 20px;
     width: 225px;
     height: 100px;
     background-image: url(../assets/logoheader.png);
     background-repeat: no-repeat;
+    background-size: contain;
 }
-.nav-menu{
+
+/* Menú */
+.nav-menu {
     display: flex;
     margin-right: 70px;
     list-style: none;
 }
 
-.nav-menu-item{
+.nav-menu-item {
     font-size: 18px;
     margin: 0 20px;
-    line-height: 100px;             /*centrado verticalmente en el nav*/
-    text-transform: uppercase;      /*para que todo quede en mayuscula*/
-    width: max-content;             /*para que cuando la pantalla es chica no me corte el about us (esta compuesto por dos palabras, entonces las corta)*/
+    line-height: 100px;
+    text-transform: uppercase;
+    width: max-content;
 }
 
-.nav-menu-link:hover{
+.nav-menu-link:hover {
     color: #0077b5;
 }
-.nav-toggle{
-    color: white;
+
+.nav-toggle {
+    color: black;
     background: none;
     border: none;
     font-size: 30px;
     padding: 0 20px;
-    line-height: 200px;
     cursor: pointer;
-    display: none;              /*para que cuando este en la version destok no aparezca*/
+    display: none;
 }
 
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 100%;
+        background-color: white;
+        display: none;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-menu-item {
+        margin: 15px 0;
+        line-height: normal;
+    }
+
+    .img_header {
+        width: 150px;
+        height: 70px;
+        background-size: contain;
+    }
+}
 
 /*---------------------------------------------------------------------------about-------------------------------------------------------------------------*/
-.medio{
+.medio {
     width: 100%;
-    height: 1000px;
+    position: relative;
     margin-bottom: 150px;
 }
 
-.medio .img-about{
+/* Imagen de fondo desktop (1536x1024) */
+.img-about {
     position: relative;
-    margin: auto;
     width: 100%;
-    height: 1000px;
+    height: 100vh;
     background-image: url(../assets/fondoAbout1.png);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
 
-.img-about::before{
+/* Sombra oscura opcional */
+.img-about::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    /* background: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0)); */
     z-index: 1;
 }
-.txt-about{
+
+/* Texto centrado sobre imagen */
+.txt-about {
     position: absolute;
-    top: 55%;
-    left: 25%;
+    top: 10%;
+    left: 5%;
     width: 40%;
-    height: auto;
-    transform: translate(-50%, -50%); /* para centrar completamente */
-    /* background-color: rgba(0, 0, 0, 0.5);  */
-    box-sizing: border-box;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     z-index: 2;
-
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px); /* para Safari */
-    padding: 1rem;
+    padding: 2rem;
+    /* backdrop-filter: blur(4px); */
+    /* -webkit-backdrop-filter: blur(4px); */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    box-sizing: border-box;
+    text-align: left;
 }
 
-.txt-about p{
-    margin-bottom: 35px;
+.txt-about p {
     font-family: 'Inter', sans-serif;
-    font-size: 1.25rem;        /* ≈ 20px */
-    line-height: 1.6;          /* buena separación entre líneas */
-    color: #ffffff;            /* blanco puro para contraste */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* mejora legibilidad sin fondo */
-    font-weight: 400;          /* no muy fino, no muy grueso */
-    max-width: 80%;            /* para que no se extienda demasiado */
-    text-align: left;        /* opcional según diseño */
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 35px;
+    font-weight: 400;
+    text-align: left;
+    max-width: 100%;
 }
 
-/*----------------------------------------------------------------------seccion attachment------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------CONTACT------------------------------------------------------------------------------*/
 
 .contacto {
     /* max-width: 800px; */
@@ -228,126 +264,112 @@ a{
     line-height: 30px;
   }
 
-/*--------------------------------------------------------------------ESTERILIZANDO------------------------------------------------------------------------*/
+  @media (max-width: 1024px) {
+    /* Ajuste del texto sobre la imagen en secciones medianas */
+    .img-about {
+        height: 80vh;
+        background-image: url(../assets/fondoAbout1024.png); /* 1024x768 recomendada */
+    }
+    .txt-about {
+        top: 10%;
+        left: 5%;
+        width: 60%;
+        padding: 1.5rem;
+    }
+    /* .txt-about p {
+        font-size: 1.1rem;
+    } */
 
+    .container_contacto {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
 
-/*--------------------------------------------header*-----------------------------------------------*/
-@media (max-width: 768px){
-    .nav-menu{
-        z-index: 7;
-        flex-direction: column;             /*un elemento encima del otro*/
+    .contact_medio {
+        width: 45%;
+    }
+
+    .carousel .card {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .img-about {
+        height: 600px;
+        background-image: url(../assets/fondoAbout768.png); /* 768x600 recomendada */
+    }
+    .txt-about {
+        top: 8%;
+        left: 5%;
+        width: 85%;
+        padding: 1rem;
+    }
+
+    .txt-about p {
+        text-align: left;
+    }
+
+    .contacto {
+        padding: 1rem;
+    }
+
+    .container_contacto {
+        flex-direction: column;
         align-items: center;
-        margin-right: 40px;
-        background-color: #2c3e50;
-        position: fixed;
-        right: -40px;
-        top: 170px;
-        padding: 20px 0;
+    }
+
+    .contact_medio {
         width: 100%;
-        height: calc(100% - 400px);         /*alto del menu desplegable*/
-        overflow-y: auto;               /*para que cuando necesite una barra de scroll (depen tamaño de pantalla) la agregue*/
+        padding: 0;
+        text-align: center;
+    }
 
-        left: 100%;                    /*para que el menu desplegable este oculto es decir desplazado hacia la derecha*/
-        transition: left 0.3s;
+    .contact_medio h3 {
+        font-size: 1.2rem;
     }
-    .nav-menu-item{
-        line-height: 80px;
-    } 
-    .nav-menu-link:hover,
-    .nav-menu-link_active{
-        background-color: none;
-        color: #83c5f7;
-        transition: .5s;
+
+    .contact_medio p {
+        font-size: 0.95rem;
     }
-    .nav-toggle{
-        display: block;
-        margin-top: 0px;
-    }
-    .nav-menu_visible{
-        left: 0;
+
+    .carousel .card {
+        height: 160px;
     }
 }
 
-@media (max-width: 249px){
-    .container .wave{
-        width: 0%;
+@media (max-width: 480px) {
+    .img-about {
+        height: 500px;
+        background-image: url(../assets/fondoAbout480.png); /* 480x600 o similar */
+        background-position: center right;
     }
-}
-@media (min-width: 250px){
-    .container .wave{
-        margin-top: 537px;
-    }
-    .cont-boton{
-        height: auto;
-    }
-}
-
-@media (min-width: 320px){
-
-    .cont-boton{
-        margin-top: 30px;
-    }
-}
-
-@media (min-width: 700px){
-    .container .wave{
-        margin-top: 418px;
-    }
-}
-
-@media (max-width: 767px){
-
-    .medio{
-        height: auto;
-    }
-    section .container-about{
-        display: block;
-        height: auto;
-        margin: auto;
-    }
-    .container-about .img-about{
-        width: 0;
-        height: 0;
-        background-image: none;
-        border: none;
-    }
-    .pie-pagina{
-        margin-top: 100px;
+    .txt-about {
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        padding: 0.75rem;
     }
 
-}
+    .txt-about p {
+        font-size: 0.9rem;
+        text-align: left;
+    }
 
-@media (min-width: 950px){
-    .container .wave{
-        margin-top: 354px;
+    .contacto h2 {
+        font-size: 1.5rem;
     }
-}
-@media (min-width: 1200px){
-    .container .wave{
-        margin-top: 287px;
-    }
-}
 
-@media (min-width: 1200px){
-    .cont-boton{
-        margin-top: 0;
-        height: 75%;
+    .carousel .card {
+        height: 140px;
     }
-}
 
-@media (min-width: 1600px){
-    .container .wave{
-        margin-top: 178px;
+    footer {
+        height: 40px;
     }
-}
 
-@media (min-width: 2000px){
-    .container .wave{
-        margin-top: 75px;
-    }
-}
-@media (min-width: 2400px){
-    .container .wave{
-        margin-top: -27px;
+    .copy {
+        font-size: 0.8rem;
+        line-height: 40px;
     }
 }
