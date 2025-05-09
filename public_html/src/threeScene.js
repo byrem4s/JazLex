@@ -8,7 +8,7 @@ export function initThreeScene() {
   const camera = new THREE.PerspectiveCamera(
     75, window.innerWidth / window.innerHeight, 0.1, 1000
   );
-  camera.position.z = 3;
+  camera.position.z = 6.5; // Valor inicial para la distancia Z
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -94,17 +94,14 @@ export function initThreeScene() {
     focoGroup.add(foco);
     focoGroup.add(focoLight); // La luz se mueve con el foco
 
-    camera.position.set(0, 1.5, 8);
-    camera.lookAt(0, 0, 0);
+    // Ajuste de la cámara para la distancia Z
+    adjustCameraDistanceOnly(); // Llamada a la función que ajusta la distancia Z
   });
 
   // Añadimos los eventos de hover
   container.addEventListener('mouseenter', () => {
-    // Enciende la luz y cambia su color a azul luminoso
     focoLight.intensity = 2.5;
     focoLight.color.set(0x00d0ff); // Azul brillante
-    
-    // Aclara el fondo ligeramente, como si la luz azul lo iluminara
     scene.background = new THREE.Color(0x3a4f58); // Fondo oscuro como base
     scene.background.lerp(new THREE.Color(0x3a4f58), 0.1); // Aclara con un toque de azul
 
@@ -114,16 +111,12 @@ export function initThreeScene() {
       bombillaMesh.material.emissiveIntensity = 2; // Intenso
     }
   });
-  
+
   container.addEventListener('mouseleave', () => {
-    // Apaga la luz
     focoLight.intensity = 0;
     focoLight.color.set(0xfff1a8); // Color cálido (por si se reutiliza)
-  
-    // Vuelve el fondo a su color original
     scene.background = new THREE.Color(0x504f4f); // Fondo oscuro original
-  
-    // Bombilla apagada: un color claro tipo vidrio, sin parecer encendido
+
     if (bombillaMesh) {
       bombillaMesh.material.emissive.set(0xffffff); // Blanco apagado
       bombillaMesh.material.emissiveIntensity = 3; // Muy tenue o casi sin brillo
@@ -134,10 +127,9 @@ export function initThreeScene() {
     requestAnimationFrame(animate);
     focoGroup.rotation.y += 0.01; // Animación de rotación del foco
     
-    // Mover ligeramente la luz direccional para agregar dinamismo a las sombras
     directionalLight.position.x = Math.sin(focoGroup.rotation.y) * 2;
     directionalLight.position.z = Math.cos(focoGroup.rotation.y) * 2;
-    
+
     renderer.render(scene, camera);
   }
 
@@ -147,5 +139,25 @@ export function initThreeScene() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    adjustCameraDistanceOnly(); // Ajuste de cámara también en el resize
   });
+
+  // Función para ajustar la posición Z de la cámara dependiendo del tamaño de pantalla
+function adjustCameraDistanceOnly() {
+    if (window.matchMedia("(max-width: 480px)").matches) {
+        camera.position.z = 12;
+        console.log("Cámara para mobile:", camera.position);
+    } else if (window.matchMedia("(max-width: 768px)").matches) {
+        camera.position.z = 9;
+        console.log("Cámara para tablet:", camera.position);
+    } else if (window.matchMedia("(max-width: 1024px)").matches) {
+        camera.position.z = 8;
+        console.log("Cámara para notebook:", camera.position);
+    }else {
+        camera.position.z = 9;
+        console.log("Cámara para desktop:", camera.position);
+    }
+}
+
+
 }
