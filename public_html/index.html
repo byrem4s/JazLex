@@ -13,7 +13,8 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <title>JazLex</title>
     <link rel = 'stylesheet' href="style.css">
    <!-- <link rel="stylesheet" href="media.css">  -->
@@ -22,30 +23,43 @@
    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
    <script src="https://kit.fontawesome.com/294531cf64.js" crossorigin="anonymous"></script>
+   <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+   <script type="text/javascript">
+    emailjs.init('7MbxxUqrqSed5d4ow')
+</script>
 </head>
 <body>
     <header>
         <div class="container">
-                <nav class = 'nav'>
-                    <button class="nav-toggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <ul class="nav-menu">
-                        <li class="nav-menu-item"><a href="https://jazlexcs.com/" class = 'nav-menu-link nav-link nav-menu-link_active'>Home</a></li>
-                        <li class="nav-menu-item"><a href="https://jazlexcs.com/Services/" class = 'nav-menu-link nav-link nav-menu-link_active'>Services</a></li>
-                        <li class="nav-menu-item"><a href="https://jazlexcs.com/about%20us/" class = 'nav-menu-link nav-link nav-menu-link_active'>About Us</a></li>
-                        <li class="nav-menu-item"><a href="https://jazlexcs.com/blog/" class = 'nav-menu-link nav-link nav-menu-link_active'>Blog</a></li>
-                    </ul>
-                </nav>
+            <nav class = 'nav'>
+                <button class="nav-toggle" aria-label="open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="img_header">
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item"><a href="https://jazlexcs.com/" class = 'nav-menu-link nav-link nav-menu-link_active'>Home</a></li>
+                    <li class="nav-menu-item"><a href="https://jazlexcs.com/Services/" class = 'nav-menu-link nav-link nav-menu-link_active'>Services</a></li>
+                    <li class="nav-menu-item"><a href="https://jazlexcs.com/about-us/" class = 'nav-menu-link nav-link nav-menu-link_active'>About Us</a></li>
+                    <li class="nav-menu-item"><a href="https://jazlexcs.com/blog/" class = 'nav-menu-link nav-link nav-menu-link_active'>Blog</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    <section class="main">
-        <div class="identy">
-            <div class="container-identy">
-                <h2 class="identy-text">We help companies accelerate their digital transformation through CRM, automation, and project management — backed by certified experts and proven engineering experience.</h2>
-            </div>
-        </div>
-    </section>
+<section class="main">
+  <div class="identy">
+    <div class="container-identy">
+      <h1 class="identy-title">Powering Industrial Performance</h1>
+      <p class="identy-text">
+        We help industrial firms maximize the life, reliability, and ROI of their electrical, control, and applications systems through modernization, strategic planning, and digital transformation.
+        <br><br>
+        Our approach reduces downtime and energy consumption—unlocking performance at every stage of your operations.
+      </p>
+    </div>
+  </div>
+</section>
     <section class="action">
         <div class="action-container">
             <div class="imagen1">
@@ -55,7 +69,7 @@
                 <p class="action-text">Whether you need to maintain your current infrastructure or expand to meet new demands, our team is ready to help.</p>
                 <p class="action-text">We specialize in automation integration using industry-leading PLC solutions from Rockwell, Schneider, Siemens, Omron, ABB, and more — ensuring seamless performance and scalability for your projects.</p>
     
-                <a href="https://jazlexcs.com/.contacto">Get in Touch</a>
+                <a href="https://jazlexcs.com/about-us/index.html">Get in Touch</a>
             </div>
         </div>
     </section>
@@ -63,24 +77,13 @@
         <div class="form-cont">
             
             <div class="foco" id="three-container">
-                <div class="contenedor">
-                   <a href="tel:365-341-0189" target="_blank">
-                        <img src="assets/phone.png" alt="Llamar al 365-341-0189" class="icono">
-                    </a>
-                    <a href="mailto:rnizamuddin@jazlexcs.com" target="_blank">
-                        <img src="assets/mail.png" alt="Enviar un correo a rnizamuddin@jazlexcs.com" class="icono">
-                    </a>
-                    <a href="https://www.linkedin.com/company/jazlexcs/posts/?feedView=all" target="_blank">
-                        <img src="assets/linkedin.png" alt="Visitar nuestro LinkedIn" class="icono">
-                    </a>
-                </div>
             </div>
             <div class="contact-form">
                 <div class="contacto">
                     <h3>Ready to power up your operations?
                         Let’s talk about how we can help bring your next project to life.</h3>
                 </div>
-                <form action="/submit-contact" method="POST">
+                <form action="/submit-contact" method="POST" id="form">
     
                     <!-- Name Field -->
                     <label for="name">Name: *</label>
@@ -96,7 +99,7 @@
                 
                     <!-- Phone Field -->
                     <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
+                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" />
                 
                     <!-- Message Field -->
                     <label for="message">Message: *</label>
@@ -115,10 +118,21 @@
                     </div>
                 
                     <!-- Submit Button -->
-                    <button type="submit">Send Message</button>
+                    <button type="submit" id="button">Send Message</button>
                   </form>
             </div>
         </div>
+            <div class="contenedor">
+                <a href="tel:365-341-0189" target="_blank">
+                    <img src="assets/phone.png" alt="Llamar al 365-341-0189" class="icono">
+                </a>
+                <a href="mailto:rnizamuddin@jazlexcs.com" target="_blank">
+                    <img src="assets/mail.png" alt="Enviar un correo a rnizamuddin@jazlexcs.com" class="icono">
+                </a>
+                <a href="https://www.linkedin.com/company/jazlexcs/posts/?feedView=all" target="_blank">
+                    <img src="assets/linkedin.png" alt="Visitar nuestro LinkedIn" class="icono">
+                </a>
+            </div>
     </section>
 
     <section class="servicio2">
@@ -140,14 +154,14 @@
             <div class="card"><img src="assets/certificado.png" alt="Imagen 1"></div>
             <div class="card"><img src="assets/certificado1.png" alt="Imagen 2"></div>
             <div class="card"><img src="assets/certificado2.png" alt="Imagen 3"></div>
-            <div class="card"><img src="assets/certificado4.jpg" alt="Imagen 4"></div>
+            <div class="card"><img src="assets/certificado4.png" alt="Imagen 4"></div>
             <div class="card"><img src="assets/certificado5.png" alt="Imagen 5"></div>
         </div>
         <div aria-hidden class="group">
             <div class="card"><img src="assets/certificado.png" alt="Imagen 1"></div>
             <div class="card"><img src="assets/certificado1.png" alt="Imagen 2"></div>
             <div class="card"><img src="assets/certificado2.png" alt="Imagen 3"></div>
-            <div class="card"><img src="assets/certificado4.jpg" alt="Imagen 4"></div>
+            <div class="card"><img src="assets/certificado4.png" alt="Imagen 4"></div>
             <div class="card"><img src="assets/certificado5.png" alt="Imagen 5"></div>
         </div>
     </div>
@@ -162,6 +176,7 @@
     </footer>
     <script src="src/threeScene.js" type="module" defer></script>
     <script src="src/ui.js" type="module"></script>
+    <script src="src/email.js" type="module"></script>
     <script src="src/main.js" type="module"></script>
 </body>
 </html>

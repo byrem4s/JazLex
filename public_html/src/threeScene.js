@@ -3,14 +3,19 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 export function initThreeScene() {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x504f4f); // Fondo más oscuro para resaltar el foco
+  // scene.background = new THREE.Color(0x504f4f); // Fondo más oscuro para resaltar el foco
 
   const camera = new THREE.PerspectiveCamera(
     75, window.innerWidth / window.innerHeight, 0.1, 1000
   );
   camera.position.z = 6.5; // Valor inicial para la distancia Z
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  // const renderer = new THREE.WebGLRenderer({ antialias: true });
+  const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  alpha: true // ✅ Permite fondo transparente
+});
+
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
@@ -19,6 +24,14 @@ export function initThreeScene() {
 
   const container = document.getElementById('three-container');
   container.appendChild(renderer.domElement);
+
+  container.addEventListener('mouseenter', () => {
+  document.body.style.backgroundColor = '#d5ebf5'; // azul tenue
+  });
+
+  container.addEventListener('mouseleave', () => {
+  document.body.style.backgroundColor = '#e1e1e1'; // color original
+  });
 
   // Luz ambiental (no muy fuerte para que no sature la escena)
   const ambientLight = new THREE.AmbientLight(0x808080, 1.5); 
@@ -42,7 +55,7 @@ export function initThreeScene() {
   let bombillaMesh = null; // Almacenamos el objeto de la bombilla (vidrio)
   let originalColor = null; // Almacenamos el color original del vidrio
 
-  loader.load('/assets/focov1.1.glb', (gltf) => {
+  loader.load('/foco.glb', (gltf) => {
     const foco = gltf.scene;
     foco.scale.set(2.7, 1.3, 2.7);
 
@@ -100,22 +113,26 @@ export function initThreeScene() {
 
   // Añadimos los eventos de hover
   container.addEventListener('mouseenter', () => {
-    focoLight.intensity = 2.5;
+    focoLight.intensity = 5;
+    focoLight.distance = 15; // Más lejos para cubrir el plano
+    focoLight.decay = 2; // Para que se degrade con la distancia
     focoLight.color.set(0x00d0ff); // Azul brillante
-    scene.background = new THREE.Color(0x3a4f58); // Fondo oscuro como base
-    scene.background.lerp(new THREE.Color(0x3a4f58), 0.1); // Aclara con un toque de azul
+    //? scene.background = new THREE.Color(0x3a4f58); // Fondo oscuro como base
+    //? scene.background.lerp(new THREE.Color(0x3a4f58), 0.1); // Aclara con un toque de azul
 
     // Cambia la bombilla a un azul brillante
     if (bombillaMesh) {
       bombillaMesh.material.emissive.set(0x00d0ff); // Azul brillante
       bombillaMesh.material.emissiveIntensity = 2; // Intenso
     }
+    scene.fog = new THREE.Fog(0x000000, 5, 15); // Color de fondo, near, far
+
   });
 
   container.addEventListener('mouseleave', () => {
     focoLight.intensity = 0;
     focoLight.color.set(0xfff1a8); // Color cálido (por si se reutiliza)
-    scene.background = new THREE.Color(0x504f4f); // Fondo oscuro original
+    //? scene.background = new THREE.Color(0x504f4f); // Fondo oscuro original
 
     if (bombillaMesh) {
       bombillaMesh.material.emissive.set(0xffffff); // Blanco apagado
@@ -146,18 +163,21 @@ export function initThreeScene() {
 function adjustCameraDistanceOnly() {
     if (window.matchMedia("(max-width: 480px)").matches) {
         camera.position.z = 12;
-        console.log("Cámara para mobile:", camera.position);
     } else if (window.matchMedia("(max-width: 768px)").matches) {
         camera.position.z = 9;
-        console.log("Cámara para tablet:", camera.position);
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
         camera.position.z = 8;
-        console.log("Cámara para notebook:", camera.position);
     }else {
         camera.position.z = 9;
-        console.log("Cámara para desktop:", camera.position);
     }
 }
-
+ const shadowPlane = new THREE.Mesh(
+  new THREE.PlaneGeometry(5, 5),
+  new THREE.ShadowMaterial({ opacity: 0.2 })
+);
+shadowPlane.rotation.x = -Math.PI / 2;
+shadowPlane.position.y = -1.5;
+shadowPlane.receiveShadow = true;
+scene.add(shadowPlane); 
 
 }

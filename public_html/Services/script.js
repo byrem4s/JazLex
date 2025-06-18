@@ -1,66 +1,28 @@
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
+document.addEventListener('DOMContentLoaded', function () {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  const navLinks = document.querySelectorAll('.nav-menu-link');
+  const icon = navToggle.querySelector('i'); // <i class="fas fa-bars">
 
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
 
-navToggle.addEventListener('click', () =>{
-    navMenu.classList.toggle('nav-menu_visible');
+    // Cambiar el ícono de hamburguesa a cerrar y viceversa
+    if (navMenu.classList.contains('show')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+
+  // Cierra el menú al hacer clic en cualquier enlace
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    });
+  });
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar el botón
-    var botonCopiar = document.getElementById('btn1');
-  
-    // Agregar un evento de clic al botón
-    botonCopiar.addEventListener('click', function() {
-      // Texto que deseas copiar
-      var textoACopiar = "rnizamuddin@jazlexcs.com";
-  
-      // Crear un elemento de textarea para almacenar el texto temporalmente
-      var textareaTemp = document.createElement('textarea');
-      textareaTemp.value = textoACopiar;
-  
-      // Agregar el textarea al DOM
-      document.body.appendChild(textareaTemp);
-  
-      // Seleccionar el texto dentro del textarea
-      textareaTemp.select();
-  
-      // Copiar el texto seleccionado al portapapeles
-      document.execCommand('copy');
-  
-      // Eliminar el textarea temporal
-      document.body.removeChild(textareaTemp);
-  
-      // Alerta para indicar que el texto ha sido copiado
-      alert('Texto copiado');
-    });
-  });
-  document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar el botón
-    var botonCopiar = document.getElementById('btn2');
-  
-    // Agregar un evento de clic al botón
-    botonCopiar.addEventListener('click', function() {
-      // Texto que deseas copiar
-      var textoACopiar = "365-341-0189";
-  
-      // Crear un elemento de textarea para almacenar el texto temporalmente
-      var textareaTemp = document.createElement('textarea');
-      textareaTemp.value = textoACopiar;
-  
-      // Agregar el textarea al DOM
-      document.body.appendChild(textareaTemp);
-  
-      // Seleccionar el texto dentro del textarea
-      textareaTemp.select();
-  
-      // Copiar el texto seleccionado al portapapeles
-      document.execCommand('copy');
-  
-      // Eliminar el textarea temporal
-      document.body.removeChild(textareaTemp);
-  
-      // Alerta para indicar que el texto ha sido copiado
-      alert('Texto copiado');
-    });
-  });

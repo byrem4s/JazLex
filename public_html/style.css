@@ -5,7 +5,7 @@
 }
 body{
     font-family: sans-serif;
-    background-color: #f1f1f1;
+    background-color: #e1e1e1;
     height: auto;
 }
 
@@ -18,6 +18,7 @@ body{
     background-position: center center;
     background-size: cover;
     margin-bottom: 20px;
+    background-color: #FBFBFB;
 }
 
 .nav{
@@ -61,7 +62,7 @@ body{
 }
 
 .nav-toggle{
-    color: white;
+    color: rgb(0, 0, 0);
     background: none;
     border: none;
     font-size: 30px;
@@ -71,24 +72,41 @@ body{
     display: none;              /*para que cuando este en la version destok no aparezca*/
 }
 
-.main{
+.main {
     margin-top: 100px;
     width: 100%;
     height: auto;
+    background-color: #f1f1f1; /* opcional: fondo suave para diferenciar */
 }
-.identy{
+
+.identy {
     text-align: center;
 }
-.container-identy{
-    padding: 10px 20%;
+
+.container-identy {
+    padding: 40px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.identy-text{
+
+.identy-title {
     font-family: "Raleway", sans-serif;
-    color:#504f4f;
-    font-size: 55px;
-    font-weight: 400;
-    line-height: 70px;
+    font-size: 42px;
+    color: #2f2f2f;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
+
+.identy-text {
+    font-family: "Raleway", sans-serif;
+    font-size: 22px;
+    line-height: 1.7;
+    color: #1d1d1d;
+    font-weight: 400;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 
 .action{  
     margin-top: 200px;
@@ -169,9 +187,8 @@ canvas{
     width: 100% !important; /* Asegura que el lienzo ocupe todo el ancho del contenedor */
     height: 100% !important; /* Asegura que el lienzo ocupe todo el alto del contenedor */
     display: block;  /* Elimina cualquier espacio extra debajo del lienzo */
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    /* box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px; */
 }
 .foco {
     position: relative; /* Esto es necesario para que los iconos se ubiquen dentro de este contenedor */
@@ -203,7 +220,7 @@ canvas{
 
 .contact-form {
     padding: 30px;
-    background-color: #f7f7f7;
+    background-color: #f1f1f1;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     max-width: 800px;
@@ -395,27 +412,21 @@ canvas{
 
 
   /*--------------------------------------------------------------------ESTERILIZANDO----------------------------------------------------------------------*/
-
-@media (max-width: 1024px) {
-    .carousel .card {
-        height: 180px;
-    }
-    .container {
+@media(max-width: 1640px){
+        .container {
         height: 1000px;
         background-image: url('assets/home1024.png');
         background-size: contain;
     }
+}
+
+@media (max-width: 1400px) {
+    .carousel .card {
+        height: 180px;
+    }
     .nav-menu-item {
         font-size: 16px;
         line-height: 80px;
-    }
-        .container-identy {
-        padding: 10px 10%;
-    }
-
-    .identy-text {
-        font-size: 42px;
-        line-height: 56px;
     }
 
     .imagen1 {
@@ -494,15 +505,6 @@ canvas{
         width: 50px;
     }    
     
-    .container-identy {
-        padding: 10px 5%;
-    }
-
-    .identy-text {
-        font-size: 32px;
-        line-height: 46px;
-    }
-
     .action {
         flex-direction: column;
         height: auto;
@@ -583,15 +585,6 @@ canvas{
     .nav-toggle {
         font-size: 26px;
         line-height: 80px;
-    }
-
-        .container-identy {
-        padding: 10px 3%;
-    }
-
-    .identy-text {
-        font-size: 24px;
-        line-height: 36px;
     }
 
     .imagen1 {
