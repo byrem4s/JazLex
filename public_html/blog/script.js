@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const navMenu = document.querySelector('.nav-menu');
   const navLinks = document.querySelectorAll('.nav-menu-link');
   const icon = navToggle.querySelector('i'); // <i class="fas fa-bars">
+  const reveals = document.querySelectorAll('.reveal');
+
 
   navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('show');
@@ -25,5 +27,29 @@ document.addEventListener('DOMContentLoaded', function () {
       icon.classList.add('fa-bars');
     });
   });
+
+  window.mostrarContenido = function(boton) {
+    const publicacion = boton.closest('.publicacion');
+    const contenido = publicacion.querySelector('.contenido-completo');
+
+    if (contenido.style.display === 'none' || contenido.style.display === '') {
+      contenido.style.display = 'block';
+      boton.textContent = 'Ver menos';
+    } else {
+      contenido.style.display = 'none';
+      boton.textContent = 'Ver más';
+    }
+  };
+
+  window.addEventListener('scroll', () => {
+    for (let el of reveals) {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        el.classList.add('active');
+      }
+    }
+  });
+
+
 });
 

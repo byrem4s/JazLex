@@ -137,9 +137,9 @@ a {
 /*--------------------------------------------------------------------------Hero----------------------------------------------------------------------------------------*/
 
 .hero {
-  background-image: url('../assets/about.png'); /* ajustá el path si es necesario */
+  background-image: url('../assets/about1.png'); /* ajustá el path si es necesario */
   background-size: cover;
-  background-position: center;
+  background-position: bottom right;
   background-repeat: no-repeat;
   height: 90vh;
   display: flex;
@@ -231,6 +231,23 @@ a {
 .services ul {
   padding-left: 20px;
 }
+  ul.custom-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul.custom-list li {
+    position: relative;
+    padding-left: 1.5em; /* espacio para el ícono */
+    margin-bottom: 0.5em;
+  }
+
+  ul.custom-list li::before {
+    content: '🔹';
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 @media (max-width: 768px) {
   .mission-values {
     flex-direction: column;
