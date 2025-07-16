@@ -51,5 +51,41 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
+
+  document.querySelectorAll('.share-btn').forEach(button => {
+  button.addEventListener('click', (event) => {
+    const publication = event.target.closest('.publication');
+    const postTitle = publication.querySelector('.titleFeed').innerText;
+    const postDescription = publication.querySelector('.parrafoFeed').innerText;
+    const postImage = getComputedStyle(publication.querySelector('.blogImg')).backgroundImage.slice(5, -2); // Para quitar "url(" y ")"
+    const postUrl = window.location.href + "#" + publication.id;  // La URL será la de la página actual + el id de la publicación
+
+    // Mostrar el modal
+    const modal = document.getElementById('socialModal');
+    modal.style.display = 'block';
+
+    // Actualizar los enlaces de las redes sociales
+    document.getElementById('shareFacebook').setAttribute('href', `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}&quote=${encodeURIComponent(postTitle)}`);
+    document.getElementById('shareWhatsApp').setAttribute('href', `https://wa.me/?text=${encodeURIComponent(postTitle)}%20${encodeURIComponent(postDescription)}%20${encodeURIComponent(postUrl)}`);
+    document.getElementById('shareLinkedIn').setAttribute('href', `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`);
+    document.getElementById('shareTwitter').setAttribute('href', `https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(postTitle)}%20${encodeURIComponent(postDescription)}`);
+
+    // Cerrar el modal cuando haga clic fuera de él
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Cerrar el modal al hacer clic en el botón de cerrar
+    document.querySelector('.close-btn').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  });
+});
+
+
+ 
+
 });
 
