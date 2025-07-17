@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.nav-menu-link');
   const icon = navToggle.querySelector('i'); // <i class="fas fa-bars">
 
+  // Función para abrir/cerrar el menú hamburguesa
   navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('show');
 

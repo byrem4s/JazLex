@@ -71,49 +71,45 @@ a {
 }
 
 .nav-toggle {
-  color: black;
+  color: rgb(0, 0, 0);
   background: none;
   border: none;
   font-size: 30px;
   padding: 0 20px;
+  line-height: 70px; /* (mejor 70 que 200 para evitar glitches) */
   cursor: pointer;
-  display: none;
+  display: none; /* por defecto oculto */
+
+  /* mostrar en pantallas chicas */
 }
 
 /* Estilos responsive */
 @media (max-width: 768px) {
-    .nav {
-    justify-content: space-between;
-    padding: 0 20px;
-    flex-direction: row;
+  .nav-menu {
+    display: none; /* oculto por defecto */
+    flex-direction: column;
+    width: 100%;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 70px; /* debajo del nav */
+    left: 0;
+    z-index: 100;
+  }
+
+  .nav-menu.show {
+    display: flex; /* se muestra al hacer clic */
   }
 
   .nav-toggle {
     display: block;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0 20px;
+    line-height: 70px;
+    cursor: pointer;
+    z-index: 101;
   }
-
-  .nav-menu {
-    position: absolute;
-    top: 200px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.95);
-    margin: 0;
-    padding: 0;
-    display: none;
-  }
-
-  .nav-menu-item {
-    line-height: 60px;
-    text-align: center;
-    font-size: 16px;
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-
   .img_header {
     width: 150px;
     height: 70px;
@@ -354,15 +350,19 @@ a {
   }
 }
 @media (max-width: 480px) {
-    .carousel .card {
-        height: 140px;
-    }
-    footer {
-        height: 40px;
-    }
+  .carousel .card {
+    height: 140px;
+  }
+  footer {
+    height: 40px;
+  }
 
-    .copy {
-        font-size: 0.8rem;
-        line-height: 40px;
-    }
+  .copy {
+    font-size: 0.8rem;
+    line-height: 40px;
+  }
+.nav-toggle {
+    font-size: 26px;
+    line-height: 80px;
+  }
 }

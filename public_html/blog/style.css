@@ -31,12 +31,12 @@ a{
 .blogImg{
     /* padding-top: 50px; */
     margin: 0 auto;
-    height: 600px;
     /* border-radius: 10px; */
     background-color: #0077b5;
     width: 94%;
 }
 .img2{
+    height: 600px;
     background-image: url('../assets/publicacion1024.png');
     background-position: center;
     overflow: hidden;
@@ -46,7 +46,8 @@ a{
 .slider {
     position: relative;
     overflow: hidden;
-    width: 80%;
+    /* width: 80%; */
+    height: auto;
 }
 
 .blogContent{
