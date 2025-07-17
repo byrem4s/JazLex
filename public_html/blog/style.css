@@ -36,24 +36,26 @@ a{
     width: 94%;
 }
 .img2{
-    height: 600px;
     background-image: url('../assets/publicacion1024.png');
     background-position: center;
     overflow: hidden;
     width: 94%;
     max-width: 1024px;
+    height: 600px;
 }
 .slider {
     position: relative;
     overflow: hidden;
-    /* width: 80%; */
-    height: auto;
+    width: 100%;
+    /* height: 600px; */
+    /* background-size: cover; */
 }
 
 .blogContent{
     text-align: left;
     padding: 3% 3% 0;
 }
+
 .footerofpublication{
     display: flex;
     align-items: center;
