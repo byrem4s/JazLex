@@ -29,12 +29,11 @@ a{
 }
 
 .blogImg{
-    /* padding-top: 50px; */
     margin: 0 auto;
     /* border-radius: 10px; */
-    background-color: #0077b5;
     width: 94%;
 }
+
 .img2{
     background-image: url('../assets/publicacion1024.png');
     background-position: center;
@@ -42,13 +41,6 @@ a{
     width: 94%;
     max-width: 1024px;
     height: 600px;
-}
-.slider {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    /* height: 600px; */
-    /* background-size: cover; */
 }
 
 .blogContent{
@@ -161,37 +153,169 @@ svg{
     color: #fff;
 }
 
-
-div.slider figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-div.slider figure {
+/* ------------------------------------------------------------------------------ MODAL Slider-------------------- */
+.slider {
     position: relative;
-    width: 400%; /* Como hay 4 imágenes, 100% * 4 */
-    margin: 0;
-    left: 0;
-    text-align: left;
-    font-size: 0;
-    display: flex; /* Flexbox para alinear las imágenes en línea */
-    animation: slidy 30s infinite; /* Aplica la animación correcta */
-}
-
-@keyframes slidy {
-    0% { left: 0%; }
-    25% { left: 0%; }
-    30% { left: -100%; }
-    50% { left: -100%; }
-    55% { left: -200%; }
-    75% { left: -200%; }
-    80% { left: -300%; }
-    100% { left: -300%; }
+    overflow: hidden;
+    width: 100%;
+    /* height: 600px; */
+    /* background-size: cover; */
 }
 
 
-/**/
+
+.image-layout {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 600px;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* border: 1px solid black; */
+}
+
+.main-image {
+  flex: 0 0 55%; /* 65% del ancho total */
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+.side-images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+}
+
+.side-image {
+  width: 100%;
+  height: auto;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.side-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* ← Muestra la imagen completa sin recorte */
+  object-position: center; /* ← Centra la imagen */
+  border-radius: 6px;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+
+/* Alturas específicas para bloques laterales */
+.side-image.top {
+  height: 35%;
+
+}
+
+
+.side-image.middle {
+  height: 35%;
+}
+
+.side-image.bottom {
+  height: 30%;
+}
+
+/* -------------------- */
+/* 📱 Responsivo móvil */
+/* -------------------- */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+
+  .close{
+    font-size: 30px;
+    padding: 10px;
+  }
+
+  .close {
+    top: 10px;
+    right: 15px;
+  }
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.9);
+  display: none; /* luego la clase .open lo cambia a flex */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.modal.open {
+  display: flex;
+}
+
+.modal-stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+.modal-content {
+  max-width: 100vw;
+  max-height: 95vh;
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  border-radius: 8px;
+}
+
+.modal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+/* ------------------------------------------------------------------------  END MODAL Slider------------------------- */
 
 /* Contenedor de la barra de navegación */
 .containerNav {
@@ -218,12 +342,6 @@ div.slider figure {
     justify-content: center;
 }
 
-nav {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 a {
     text-decoration: none;
@@ -239,24 +357,114 @@ a {
     background-size: contain;
 }
 
-/* Menú */
+.nav {
+    width: 100%;
+    /* height: 80px;  Ajusta según lo que necesites para el nav */
+    display: flex;
+    justify-content: flex-end;  /* Mantén el nav alineado a la derecha */
+    margin: 0 auto;
+    position: relative; /* Necesario para posicionar el submenú correctamente */
+    justify-content: space-between;
+}
+
 .nav-menu {
     display: flex;
-    margin-right: 70px;
+    margin-right: 40px;
     list-style: none;
+}
+.nav-menu-wrapper {
+  position: relative; /* Para que submenu se alinee respecto a esto */
 }
 
 .nav-menu-item {
     font-size: 18px;
-    margin: 0 20px;
-    line-height: 100px;
-    text-transform: uppercase;
-    width: max-content;
+    margin: 0 10px;
+    line-height: 100px; /* centrado verticalmente en el nav */
+    text-transform: uppercase; /* para que todo quede en mayúscula */
+    width: max-content; /* para que no se corte "About Us" */
+}
+
+.nav-menu-link {
+    padding: 8px 12px;
+    border-radius: 3px;
+    transition: .5s;
 }
 
 .nav-menu-link:hover {
     color: #0077b5;
 }
+
+/* El submenú único (aparece debajo del menú principal) */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: none;
+  background-color: rgba(240, 240, 240, .7);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas, una por ítem */
+  gap: 0; /* sin espacio entre columnas */
+  padding: 20px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border-radius: 7px;
+}
+
+.submenu-column {
+  padding: 0 10px;
+  border-right: 1px solid #ccc; /* línea vertical */
+}
+
+.submenu-column:last-child {
+  border-right: none; /* que la última no tenga línea a la derecha */
+}
+
+/* Asegura que las columnas dentro del submenu estén alineadas correctamente */
+.submenu-column-left,
+.submenu-column-right {
+    padding: 0 20px;
+}
+/* .submenu-column{
+    background-color: #f0f0f0;
+} */
+
+/* Estilos para cada columna del submenú */
+.submenu-column h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.submenu-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu-column li {
+  margin: 5px 0;
+}
+
+.submenu-column a {
+  color: rgb(20, 15, 15);
+  text-decoration: none;
+  display: block;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.submenu-column a:hover {
+  /* color: #0077b5; */
+  background-color: #fff;
+}
+
+/* Mostrar el submenú cuando el mouse pasa por encima de cualquier ítem del nav */
+.nav-menu-item:hover .submenu {
+    display: grid;
+}
+
 
 .nav-toggle {
     color: black;
@@ -282,39 +490,43 @@ a {
 }
     
 @media (max-width: 768px) {
-    .nav {
-    justify-content: space-between;
-    padding: 0 20px;
-    flex-direction: row;
-    z-index: 10;
-  }
+    .nav-menu {
+        display: none;  /* Ocultamos el menú en móvil por defecto */
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-menu.show {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 
-  .nav-toggle {
-    display: block;
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: 200px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.95);
-    margin: 0;
-    padding: 0;
-    display: none;
-  }
-
-  .nav-menu-item {
-    line-height: 60px;
-    text-align: center;
-    font-size: 16px;
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-
+    .nav-menu-item {
+        width: 100%;
+    }
+    
+    .nav-menu-item.active .submenu {
+        display: block;  /* Solo mostramos el submenú cuando se activa */
+    }
+    
+    /* El submenú será de una sola columna en móvil */
+    .submenu {
+        grid-template-columns: 1fr;
+        padding: 10px 0;
+    }
+    .nav-toggle{
+        display: block;
+    }
+    
+    .nav-menu-wrapper.open .nav-menu {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Activar el submenú en móvil */
+    .nav-menu-item.has-submenu.active .submenu {
+        display: block;
+    }
     .img_header {
         width: 150px;
         height: 70px;
@@ -342,9 +554,7 @@ a {
 }
 
 
-/* .blogImg {
-    width: 80%;
-} */
+
 
 
 .titleFeed {

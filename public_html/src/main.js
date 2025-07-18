@@ -16,19 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Ocultamos el submenú de inicio
   submenu.style.display = 'none';  // Se mantiene oculto hasta que el mouse pase sobre el menú
 
-  // Función para abrir/cerrar el menú hamburguesa
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
+  if (navToggle && navMenu && icon) {
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
 
-    // Cambiar el ícono de hamburguesa a cerrar y viceversa
-    if (navMenu.classList.contains('show')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
-    } else {
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    }
-  });
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+  }
 
   // Cierra el menú al hacer clic en cualquier enlace
   navLinks.forEach(link => {

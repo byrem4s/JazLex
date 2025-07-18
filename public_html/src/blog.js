@@ -101,4 +101,70 @@ document.addEventListener('DOMContentLoaded', function () {
   closeBtn?.addEventListener('click', () => {
     modal.style.display = 'none';
   });
+
+
+    // Submenú único
+  const submenu = document.querySelector('.submenu');
+  
+  // Ocultamos el submenú de inicio
+  submenu.style.display = 'none';  // Se mantiene oculto hasta que el mouse pase sobre el menú
+
+  // Mostrar el submenu al entrar al nav-menu
+  navMenu.addEventListener('mouseenter', () => {
+    submenu.style.display = 'grid';
+  });
+
+  // Ocultar el submenu si salís de ambos: nav-menu y submenu
+  function hideSubmenuIfOutside(event) {
+    if (!navMenu.contains(event.relatedTarget) && !submenu.contains(event.relatedTarget)) {
+      submenu.style.display = 'none';
+    }
+  }
+
+  navMenu.addEventListener('mouseleave', hideSubmenuIfOutside);
+  submenu.addEventListener('mouseleave', hideSubmenuIfOutside);
+
+
+  const images = Array.from(document.querySelectorAll('.main-image img, .side-image img'));
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+  img.addEventListener('click', () => openModal(index));
+});
+
+function openModal(index) {
+  currentIndex = index;
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  modal.classList.add("open");
+  modalImg.src = images[currentIndex].getAttribute('data-full');
+}
+
+function closeModal() {
+  const modal = document.getElementById("modal");
+  modal.classList.remove("open");
+}
+
+function changeImage(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = images.length - 1;
+  if (currentIndex >= images.length) currentIndex = 0;
+  document.getElementById("modal-img").src = images[currentIndex].getAttribute('data-full');
+}
+
+document.addEventListener('keydown', function (e) {
+  if (document.getElementById("modal").classList.contains("open")) {
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowLeft") changeImage(-1);
+    if (e.key === "ArrowRight") changeImage(1);
+  }
+});
+
+document.getElementById("modal").addEventListener('click', (e) => {
+  if (e.target.id === "modal") {
+    closeModal();
+  }
+});
+
+
 });

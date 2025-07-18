@@ -26,7 +26,7 @@ body{
     width: 100%;
     height: 80px;  /* Ajusta según lo que necesites para el nav */
     display: flex;
-    justify-content: flex-end;  /* Mantén el nav alineado a la derecha */
+    justify-content: space-between;  /* Mantén el nav alineado a la derecha */
     margin: 0 auto;
     position: relative; /* Necesario para posicionar el submenú correctamente */
     height: 70px;
@@ -121,7 +121,8 @@ body{
 }
 
 .submenu-column a:hover {
-  color: #0077b5;
+  /* color: #0077b5; */
+  background-color: #fff;
 }
 
 /* Mostrar el submenú cuando el mouse pasa por encima de cualquier ítem del nav */
@@ -130,52 +131,15 @@ body{
 }
 
 
-/* Si el menú está en versión móvil */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: block;  /* muestra el botón hamburguesa */
-    }
-    
-    .nav-menu {
-        display: none;  /* Ocultamos el menú en móvil por defecto */
-        flex-direction: column;
-        width: 100%;
-    }
 
-    .nav-menu-item {
-        width: 100%;
-    }
-    
-    .nav-menu-item.active .submenu {
-        display: block;  /* Solo mostramos el submenú cuando se activa */
-    }
-    
-    /* El submenú será de una sola columna en móvil */
-    .submenu {
-        grid-template-columns: 1fr;
-        padding: 10px 0;
-    }
-    
-    .nav-toggle.open + .nav-menu {
-        display: flex;  /* Abrir menú en móvil */
-    }
-    
-    /* Activar el submenú en móvil */
-    .nav-menu-item.has-submenu.active .submenu {
-        display: block;
-    }
-}
-
-/* Ajustes para el menú en móvil */
 .nav-toggle {
-    color: rgb(0, 0, 0);
+    color: black;
     background: none;
     border: none;
     font-size: 30px;
     padding: 0 20px;
-    line-height: 200px;
     cursor: pointer;
-    display: none; /* oculto en desktop */
+    display: none;
 }
 
 
@@ -568,6 +532,45 @@ canvas{
 }
 
 @media (max-width: 768px) {
+
+    .nav-menu {
+        display: none;  /* Ocultamos el menú en móvil por defecto */
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-menu.show {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu-item {
+        width: 100%;
+    }
+    
+    .nav-menu-item.active .submenu {
+        display: block;  /* Solo mostramos el submenú cuando se activa */
+    }
+    
+    /* El submenú será de una sola columna en móvil */
+    .submenu {
+        grid-template-columns: 1fr;
+        padding: 10px 0;
+    }
+    .nav-toggle{
+        display: block;
+    }
+    
+    .nav-menu-wrapper.open .nav-menu {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Activar el submenú en móvil */
+    .nav-menu-item.has-submenu.active .submenu {
+        display: block;
+    }
+
     .carousel .card {
         height: 160px;
     }
@@ -575,33 +578,6 @@ canvas{
         height: 900px;
         background-image: url('assets/home768.png');
         background-size: contain;
-    }
-
-    .nav {
-        justify-content: space-between;
-        padding: 0 20px;
-    }
-
-    .nav-menu {
-        position: absolute;
-        top: 200px;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.95);
-        margin: 0;
-        padding: 0;
-        display: none;
-    }
-
-    .nav-menu-item {
-        line-height: 60px;
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .nav-menu.show {
-        display: flex;
     }
 
     .icono {
@@ -685,10 +661,7 @@ canvas{
         font-size: 14px;
     }
 
-    .nav-toggle {
-        font-size: 26px;
-        line-height: 80px;
-    }
+
 
     .imagen1 {
         background-image: url('assets/actionx400.jpg');

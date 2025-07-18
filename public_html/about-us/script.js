@@ -36,4 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
+
+        // Submenú único
+  const submenu = document.querySelector('.submenu');
+  
+  // Ocultamos el submenú de inicio
+  submenu.style.display = 'none';  // Se mantiene oculto hasta que el mouse pase sobre el menú
+
+  // Mostrar el submenu al entrar al nav-menu
+  navMenu.addEventListener('mouseenter', () => {
+    submenu.style.display = 'grid';
+  });
+
+  // Ocultar el submenu si salís de ambos: nav-menu y submenu
+  function hideSubmenuIfOutside(event) {
+    if (!navMenu.contains(event.relatedTarget) && !submenu.contains(event.relatedTarget)) {
+      submenu.style.display = 'none';
+    }
+  }
+
+  navMenu.addEventListener('mouseleave', hideSubmenuIfOutside);
+  submenu.addEventListener('mouseleave', hideSubmenuIfOutside);
 });

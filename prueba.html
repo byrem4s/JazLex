@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prueba.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="image-layout">
+    <!-- Columna principal -->
+        <div class="main-image">
+            <img src="/public_html/assets/publi1_edit.jpg" data-full="/public_html/assets/publi1.jpg">
+        </div>
+
+    <!-- Columna secundaria con 3 bloques -->
+        <div class="side-images">
+            <div class="side-image top">
+                <img src="/public_html/assets/publi2_edit.jpg" data-full="/public_html/assets/publi2.jpg">
+            </div>
+            <div class="side-image middle">
+                <img src="/public_html/assets/publi3_edit.jpg" data-full="/public_html/assets/publi3.jpg">
+            </div>
+            <div class="side-image bottom">
+                <img src="/public_html/assets/publi4_edit.jpg" data-full="/public_html/assets/publi4.jpg">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-stack">
+            <span class="close" onclick="closeModal()">×</span>
+            <img class="modal-content" id="modal-img">
+            <a class="prev" onclick="changeImage(-1)">❮</a>
+            <a class="next" onclick="changeImage(1)">❯</a>
+        </div>
+    </div>
+
+
+
+    <script src="./prueba.js"></script>
+</body>
+</html>

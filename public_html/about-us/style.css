@@ -8,6 +8,7 @@ body{
     background-color: rgb(255, 255, 255);
     line-height: 1;
     animation: fadeIn 0.5s ease-in;
+    z-index: 1;
 }
 @keyframes fadeIn {
   from { opacity: 0 }
@@ -22,15 +23,6 @@ body{
   align-items: center;
   justify-content: center;
 }
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  width: 100%;
-}
-
 a {
     text-decoration: none;
     color: black;
@@ -45,71 +37,165 @@ a {
   background-size: contain;
 }
 
+.nav {
+    width: 100%;
+    /* height: 80px;  Ajusta según lo que necesites para el nav */
+    display: flex;
+    justify-content: space-between;  /* Mantén el nav alineado a la derecha */
+    margin: 0 auto;
+    position: relative; /* Necesario para posicionar el submenú correctamente */
+    z-index: 10;
+}
+
 .nav-menu {
-  display: flex;
-  margin-right: 70px;
-  list-style: none;
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+}
+.nav-menu-wrapper {
+  position: relative; /* Para que submenu se alinee respecto a esto */
 }
 
 .nav-menu-item {
-  font-size: 18px;
-  margin: 0 20px;
-  line-height: 100px;
-  text-transform: uppercase;
-  width: max-content;
+    font-size: 18px;
+    margin: 0 10px;
+    line-height: 100px; /* centrado verticalmente en el nav */
+    text-transform: uppercase; /* para que todo quede en mayúscula */
+    width: max-content; /* para que no se corte "About Us" */
 }
 
 .nav-menu-link {
-  text-decoration: none;
-  color: black;
-  transition: color 0.3s ease;
-
+    padding: 8px 12px;
+    border-radius: 3px;
+    transition: .5s;
 }
 
 .nav-menu-link:hover {
-  color: #0077b5;
+    color: #0077b5;
 }
 
-.nav-toggle {
-  color: rgb(0, 0, 0);
-  background: none;
-  border: none;
-  font-size: 30px;
-  padding: 0 20px;
-  line-height: 70px; /* (mejor 70 que 200 para evitar glitches) */
-  cursor: pointer;
-  display: none; /* por defecto oculto */
-
-  /* mostrar en pantallas chicas */
+/* El submenú único (aparece debajo del menú principal) */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: none;
+  background-color: rgba(240, 240, 240, .9);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas, una por ítem */
+  gap: 0; /* sin espacio entre columnas */
+  padding: 20px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border-radius: 7px;
 }
 
-/* Estilos responsive */
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none; /* oculto por defecto */
-    flex-direction: column;
-    width: 100%;
+.submenu-column {
+  padding: 0 10px;
+  border-right: 1px solid #ccc; /* línea vertical */
+}
+
+.submenu-column:last-child {
+  border-right: none; /* que la última no tenga línea a la derecha */
+}
+
+/* Asegura que las columnas dentro del submenu estén alineadas correctamente */
+.submenu-column-left,
+.submenu-column-right {
+    padding: 0 20px;
+}
+/* .submenu-column{
     background-color: #f0f0f0;
-    position: absolute;
-    top: 70px; /* debajo del nav */
-    left: 0;
-    z-index: 100;
-  }
+} */
 
-  .nav-menu.show {
-    display: flex; /* se muestra al hacer clic */
-  }
+/* Estilos para cada columna del submenú */
+.submenu-column h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-  .nav-toggle {
-    display: block;
+.submenu-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu-column li {
+  margin: 5px 0;
+}
+
+.submenu-column a {
+  color: rgb(20, 15, 15);
+  text-decoration: none;
+  display: block;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.submenu-column a:hover {
+  /* color: #0077b5; */
+  background-color: #fff;
+}
+
+/* Mostrar el submenú cuando el mouse pasa por encima de cualquier ítem del nav */
+.nav-menu-item:hover .submenu {
+    display: grid;
+}
+.nav-toggle {
+    color: black;
     background: none;
     border: none;
     font-size: 30px;
     padding: 0 20px;
-    line-height: 70px;
     cursor: pointer;
-    z-index: 101;
-  }
+    display: none;
+}
+
+
+/* Si el menú está en versión móvil */
+@media (max-width: 768px) {
+.nav-menu {
+        display: none;  /* Ocultamos el menú en móvil por defecto */
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-menu.show {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(240, 240, 240, .9);
+    }
+
+    .nav-menu-item {
+        width: 100%;
+    }
+    
+    .nav-menu-item.active .submenu {
+        display: block;  /* Solo mostramos el submenú cuando se activa */
+    }
+    
+    /* El submenú será de una sola columna en móvil */
+    .submenu {
+        grid-template-columns: 1fr;
+        padding: 10px 0;
+    }
+    .nav-toggle{
+        display: block;
+    }
+    
+    .nav-menu-wrapper.open .nav-menu {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Activar el submenú en móvil */
+    .nav-menu-item.has-submenu.active .submenu {
+        display: block;
+    }
+
   .img_header {
     width: 150px;
     height: 70px;
@@ -118,7 +204,12 @@ a {
   .carousel .card {
         height: 160px;
     }
+  .mission-values {
+    flex-direction: column;
+  }
 }
+
+
 /*--------------------------------------------------------------------------Animacion----------------------------------------------------------------------------------------*/
 .reveal {
   opacity: 0;
@@ -244,11 +335,6 @@ a {
     left: 0;
     top: 0;
   }
-@media (max-width: 768px) {
-  .mission-values {
-    flex-direction: column;
-  }
-}
 /*--------------------------------------------------------------------------FOOTER----------------------------------------------------------------------------------------*/
   
 .carousel {
