@@ -1,25 +1,52 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const reveals = document.querySelectorAll('.reveal');
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-menu');
   const navLinks = document.querySelectorAll('.nav-menu-link');
-  const icon = navToggle?.querySelector('i');
-  const reveals = document.querySelectorAll('.reveal');
+  const navItems = document.querySelectorAll('.nav-menu-item');
+  const icon = navToggle.querySelector('i');
 
-  if (navToggle && navMenu && icon) {
+  //  Menu y sub menu
+  
+   // Toggle menú hamburguesa
     navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
-    });
+    navMenu.classList.toggle('show');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  });
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('show');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      });
+  // Cerrar menú al hacer click en enlace
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
     });
-  }
+  });
+
+  // Abrir/cerrar submenús en modo mobile
+  navItems.forEach(item => {
+    const submenu = item.querySelector('.submenu-column');
+
+    item.addEventListener('click', (e) => {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile && submenu) {
+        e.preventDefault(); // Evita redireccionar
+        item.classList.toggle('active'); // Clase usada por CSS para abrir submenu
+      }
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera (mobile)
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+      navMenu.classList.remove('show');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+
+  // Publication
 
   window.mostrarContenido = function (boton) {
     const publicacion = boton.closest('.publicacion');
@@ -103,34 +130,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-    // Submenú único
-  const submenu = document.querySelector('.submenu');
-  
-  // Ocultamos el submenú de inicio
-  submenu.style.display = 'none';  // Se mantiene oculto hasta que el mouse pase sobre el menú
 
-  // Mostrar el submenu al entrar al nav-menu
-  navMenu.addEventListener('mouseenter', () => {
-    submenu.style.display = 'grid';
-  });
-
-  // Ocultar el submenu si salís de ambos: nav-menu y submenu
-  function hideSubmenuIfOutside(event) {
-    if (!navMenu.contains(event.relatedTarget) && !submenu.contains(event.relatedTarget)) {
-      submenu.style.display = 'none';
-    }
-  }
-
-  navMenu.addEventListener('mouseleave', hideSubmenuIfOutside);
-  submenu.addEventListener('mouseleave', hideSubmenuIfOutside);
 
 
   const images = Array.from(document.querySelectorAll('.main-image img, .side-image img'));
-let currentIndex = 0;
+  let currentIndex = 0;
 
-images.forEach((img, index) => {
-  img.addEventListener('click', () => openModal(index));
-});
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openModal(index));
+  });
 
 function openModal(index) {
   currentIndex = index;

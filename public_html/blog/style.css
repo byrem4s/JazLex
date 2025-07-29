@@ -13,6 +13,109 @@ body {
 a{
     text-decoration: none;
 }
+.img_header {
+  margin-left: 20px;
+  width: 225px;
+  height: 100px;
+  background-image: url(../assets/logoheader.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Respetar el estilo base */
+.nav-menu, .submenu-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.nav-menu-link {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    transition: 0.5s;
+}
+
+.menu {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  /* gap: 20px; */
+  /* align-items: center; */
+  margin-right: 40px;
+  z-index: 100;
+}
+
+.nav-menu-item {
+  position: relative;
+  font-size: 18px;
+  margin: 0 10px;
+  line-height: 100px;
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.submenu-column {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ccc;
+  padding: 10px 3px;
+  min-width: 200px;
+  border-radius: 6px;
+  z-index: 999;
+}
+
+.submenu-column ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: rgb(0, 0, 0);
+  white-space: nowrap;
+  font-size: 1em;
+  line-height: 50px;
+  text-transform: none;
+}
+
+.submenu-column ul li a:hover {
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.nav-menu-item:hover .submenu-column {
+  display: block;
+}
+
+/* Hamburger button */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 26px;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  z-index: 2000;
+}
+/* Si el menú está en versión móvil */
+@media (max-width: 830px){
+  .img_header{
+    margin: auto 0;
+    padding-top: 10px;
+  }
+}
+
 /*slider*/
 .enlace{
     color: blue;
@@ -242,6 +345,53 @@ svg{
 /* 📱 Responsivo móvil */
 /* -------------------- */
 @media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    .menu{
+      justify-content: right;
+    }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 20px;
+    top: 70px;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    background-color: rgb(173, 173, 173);
+  }
+  .nav-menu-item:hover{
+    background-color: #ffffff;
+  }
+  .nav-menu-item{
+    width: 100%;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-menu-link {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .submenu-column {
+    position: static;
+    display: none;
+    padding: 0;
+  }
+
+  .nav-menu-item.active .submenu-column {
+    display: block;
+  }
+
+  .submenu-column ul li a {
+    padding: 10px 0 10px 15px;
+  }
+
   .modal-content {
     max-width: 95vw;
     max-height: 80vh;
@@ -316,23 +466,6 @@ svg{
 
 
 /* ------------------------------------------------------------------------  END MODAL Slider------------------------- */
-
-/* Contenedor de la barra de navegación */
-.containerNav {
-    height: 100px;
-    width: 100%;
-    background-color: #ffffff;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-/* Estilo del menú de navegación */
-/* Estilos base */
 .container {
     font-family: 'Roboto', sans-serif;
     background-color: white;
@@ -340,12 +473,6 @@ svg{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-a {
-    text-decoration: none;
-    color: black;
 }
 
 .img_header {
@@ -357,127 +484,15 @@ a {
     background-size: contain;
 }
 
-.nav {
-    width: 100%;
-    /* height: 80px;  Ajusta según lo que necesites para el nav */
-    display: flex;
-    justify-content: flex-end;  /* Mantén el nav alineado a la derecha */
-    margin: 0 auto;
-    position: relative; /* Necesario para posicionar el submenú correctamente */
-    justify-content: space-between;
+.etiquetas {
+    display: block; /* Mostramos las etiquetas */
+    margin-left: 0; /* Alineamos al centro para pantallas grandes */
+    font-size: 1.5rem; /* Ajustamos tamaño de fuente */
 }
-
-.nav-menu {
-    display: flex;
-    margin-right: 40px;
-    list-style: none;
+.img2{
+    background-position: center;
+    background-size: cover;
 }
-.nav-menu-wrapper {
-  position: relative; /* Para que submenu se alinee respecto a esto */
-}
-
-.nav-menu-item {
-    font-size: 18px;
-    margin: 0 10px;
-    line-height: 100px; /* centrado verticalmente en el nav */
-    text-transform: uppercase; /* para que todo quede en mayúscula */
-    width: max-content; /* para que no se corte "About Us" */
-}
-
-.nav-menu-link {
-    padding: 8px 12px;
-    border-radius: 3px;
-    transition: .5s;
-}
-
-.nav-menu-link:hover {
-    color: #0077b5;
-}
-
-/* El submenú único (aparece debajo del menú principal) */
-.submenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  display: none;
-  background-color: rgba(240, 240, 240, .7);
-  z-index: 10;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas, una por ítem */
-  gap: 0; /* sin espacio entre columnas */
-  padding: 20px 0;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  border-radius: 7px;
-}
-
-.submenu-column {
-  padding: 0 10px;
-  border-right: 1px solid #ccc; /* línea vertical */
-}
-
-.submenu-column:last-child {
-  border-right: none; /* que la última no tenga línea a la derecha */
-}
-
-/* Asegura que las columnas dentro del submenu estén alineadas correctamente */
-.submenu-column-left,
-.submenu-column-right {
-    padding: 0 20px;
-}
-/* .submenu-column{
-    background-color: #f0f0f0;
-} */
-
-/* Estilos para cada columna del submenú */
-.submenu-column h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.submenu-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.submenu-column li {
-  margin: 5px 0;
-}
-
-.submenu-column a {
-  color: rgb(20, 15, 15);
-  text-decoration: none;
-  display: block;
-  padding: 8px 0;
-  transition: color 0.3s ease;
-}
-
-.submenu-column a:hover {
-  /* color: #0077b5; */
-  background-color: #fff;
-}
-
-/* Mostrar el submenú cuando el mouse pasa por encima de cualquier ítem del nav */
-.nav-menu-item:hover .submenu {
-    display: grid;
-}
-
-
-.nav-toggle {
-    color: black;
-    background: none;
-    border: none;
-    font-size: 30px;
-    padding: 0 20px;
-    cursor: pointer;
-    display: none;
-}
-
-/* Estilos responsive */
-/* 767px - 675px */
 @media (max-width: 910px) {
     .img2{
         background-image: url('../assets/publicacion1.png');
@@ -489,60 +504,6 @@ a {
     }
 }
     
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;  /* Ocultamos el menú en móvil por defecto */
-        flex-direction: column;
-        width: 100%;
-    }
-    .nav-menu.show {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .nav-menu-item {
-        width: 100%;
-    }
-    
-    .nav-menu-item.active .submenu {
-        display: block;  /* Solo mostramos el submenú cuando se activa */
-    }
-    
-    /* El submenú será de una sola columna en móvil */
-    .submenu {
-        grid-template-columns: 1fr;
-        padding: 10px 0;
-    }
-    .nav-toggle{
-        display: block;
-    }
-    
-    .nav-menu-wrapper.open .nav-menu {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    /* Activar el submenú en móvil */
-    .nav-menu-item.has-submenu.active .submenu {
-        display: block;
-    }
-    .img_header {
-        width: 150px;
-        height: 70px;
-        background-size: contain;
-    }
-    .etiquetas {
-        display: block; /* Mostramos las etiquetas */
-        margin-left: 0; /* Alineamos al centro para pantallas grandes */
-        font-size: 1.5rem; /* Ajustamos tamaño de fuente */
-    }
-    .img2{
-        background-position: center;
-        background-size: cover;
-    }
-}
-
 
 /* Feed de publicaciones */
 

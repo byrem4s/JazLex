@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú con Submenú</title>
     <link rel="stylesheet" href="prueba.css">
-    <title>Document</title>
 </head>
 <body>
 
-    <div class="image-layout">
-    <!-- Columna principal -->
-        <div class="main-image">
-            <img src="/public_html/assets/publi1_edit.jpg" data-full="/public_html/assets/publi1.jpg">
-        </div>
+    <nav class="menu">
+        <ul class="nav-menu">
+            <li class="nav-menu-item">
+                <a href="https://jazlexcs.com/" class="nav-menu-link nav-link nav-menu-link_active">Home</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="https://jazlexcs.com/Services/" class="nav-menu-link nav-link">Services</a>
+                <div class="submenu-column">                        
+                    <ul>
+                        <li><a href="#">PLC/HMI Services</a></li>
+                        <li><a href="#">Motor Control Centers</a></li>
+                        <li><a href="#">Network Services</a></li>
+                        <li><a href="#">Electrical/Mechanical Drafting</a></li>
+                        <li><a href="#">Harmonic Study Services</a></li>
+                        <li><a href="#">Power Factor Study</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-menu-item">
+                <a href="https://jazlexcs.com/about-us/" class="nav-menu-link nav-link">About Us</a>
+                    <div class="submenu-column">                     
+                        <ul>
+                            <li><a href="./privacy/index.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+            </li>
+            <li class="nav-menu-item">
+                <a href="https://jazlexcs.com/blog/" class="nav-menu-link nav-link">Blog</a>
+            </li>
+        </ul>
+    </nav>
 
-    <!-- Columna secundaria con 3 bloques -->
-        <div class="side-images">
-            <div class="side-image top">
-                <img src="/public_html/assets/publi2_edit.jpg" data-full="/public_html/assets/publi2.jpg">
-            </div>
-            <div class="side-image middle">
-                <img src="/public_html/assets/publi3_edit.jpg" data-full="/public_html/assets/publi3.jpg">
-            </div>
-            <div class="side-image bottom">
-                <img src="/public_html/assets/publi4_edit.jpg" data-full="/public_html/assets/publi4.jpg">
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-stack">
-            <span class="close" onclick="closeModal()">×</span>
-            <img class="modal-content" id="modal-img">
-            <a class="prev" onclick="changeImage(-1)">❮</a>
-            <a class="next" onclick="changeImage(1)">❯</a>
-        </div>
-    </div>
-
-
-
-    <script src="./prueba.js"></script>
+    <script src="prueba.js"></script>
 </body>
 </html>
