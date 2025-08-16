@@ -1,0 +1,491 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Añadido para asegurar un cálculo más preciso del tamaño de los elementos */
+}
+
+body {
+    background-color: #F3F4F6;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+a{
+    text-decoration: none;
+}
+
+.img_header {
+  margin-left: 20px;
+  width: 225px;
+  height: 100px;
+  background-image: url(../assets/logoheader.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Respetar el estilo base */
+.nav-menu, .submenu-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.nav-menu-link {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    transition: 0.5s;
+}
+
+.menu {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  /* gap: 20px; */
+  /* align-items: center; */
+  margin-right: 40px;
+  z-index: 100;
+}
+
+.nav-menu-item {
+  position: relative;
+  font-size: 18px;
+  margin: 0 10px;
+  line-height: 100px;
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.submenu-column {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ccc;
+  padding: 10px 3px;
+  min-width: 200px;
+  border-radius: 6px;
+  z-index: 999;
+}
+
+.submenu-column ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: rgb(0, 0, 0);
+  white-space: nowrap;
+  font-size: 1em;
+  line-height: 50px;
+  text-transform: none;
+}
+
+.submenu-column ul li a:hover {
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.nav-menu-item:hover .submenu-column {
+  display: block;
+}
+
+/* Hamburger button */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 26px;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  z-index: 2000;
+}
+
+/*fondo image 1*/
+.containerclip{
+  width: 80%;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.svgclip {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.btnclip{
+  width: 12%;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 10px;
+}
+
+.btnclip:hover{
+  transform: scale(1.05); /* agranda todo */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* opcional, más efecto */
+}
+.btnservices{
+  right: 5%;
+  bottom: 0;
+  background-color: rgba(49, 180, 241, 1);
+}
+.btnmarks{
+  right: 20%;
+  bottom: 0%;
+  background-color: #eeecec;
+}
+
+.btnclip a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* ocupa toda la caja */
+  text-decoration: none;
+}
+
+h3{
+  color: black;
+  font-size: 1.3em;
+  font-weight: 300;
+  padding: 10px;
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card p::after {
+  content: " ➡";
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.card:hover p::after {
+  opacity: 1;
+}
+
+.txtimage {
+  /* margin-top: 40px; */
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 50%;
+  height: 100%;
+  padding: 30px;
+  color: white;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* background: linear-gradient(to right, rgba(32, 32, 32, 0.6), transparent);  */
+  /* backdrop-filter: blur(2px); */
+}
+.txtimage h1 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+.txtimage p {
+  font-size: 1.2em;
+  line-height: 1.4;
+  color: white;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+/* program */
+
+
+.program{
+  margin-top: 5%;
+  padding-top: 20px;
+	width: 100%;
+	height: auto;
+	/* background-color: white; */
+}
+
+.containerprogram{
+    padding-top: 20px;
+    width: 80%;
+    height: auto;
+    max-width: 1080px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+    margin: auto;
+}
+.img-program img{
+	display: block;
+	margin: 0px auto;
+}
+
+
+.titleprogram{
+	margin: 40px 0 20px;
+    text-align: left;
+    font-size: 22px;
+    color: rgba(32, 32, 164, 0.8);
+    background: transparent;
+    font-weight: 700;
+    font-family: 'Arimo',Helvetica,Arial,Lucida,sans-serif;
+    padding: 0px 15px;
+    line-height: 1.25em;
+}
+
+.cajitas{
+    padding: 0px 0px 50px;
+}
+.cajitas:hover{
+	h2{
+		color: blue;	
+	}
+}
+
+span{
+    color: #666;
+    text-align: center;
+    background: transparent;
+    line-height: 1.7em;
+    font-weight: 500;
+}
+
+/* contenido servicio main */
+.containerservice{
+  height: auto;
+  margin-top: 5%;
+  width: 100%;
+}
+.descriptionservice{
+  background-color: #dadadac5
+
+
+}
+.contentservice{
+  display: flex;
+  gap: 5%;
+  width: 70%;
+  margin: 5% auto 5%;
+}
+.contenidoservice{
+  width: 70%;
+  margin: 5% auto 5%;
+}
+.titleservice{
+  margin-bottom: 20px;
+  padding-top: 50px;
+  font-size: 2.5em;
+  font-weight: 549
+}
+p{
+  color: #0c0c0c;
+  text-align: justify;
+  background: transparent;
+  line-height: 1.7em;
+  font-weight: 500;
+}
+.subtituloservice{
+  line-height: 2em;
+  font-weight: 400;
+  font-size: 1.4em;
+  width: 60%;
+  padding-bottom: 50px;
+}
+.infoservice{
+  width: 40%;
+}
+
+.imgservice{
+  width: 600px;
+  height: 400px;
+  background-image: url(/public_html/assets/plc-hmi.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Carrusel */
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* max-width: 1100px; */
+  margin: 0 auto 70px 0;
+  position: relative;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+}
+
+.carousel-container-outer {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 300px;
+  margin-right: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.slide img {
+  /* max-width: 100%; */
+  border-radius: 6px;
+  /* height: auto; */
+  width: 550px;
+  height: 400px;
+  transition: transform 0.3s ease;
+}
+
+.slide:hover {
+  transform: scale(1.05); /* agranda todo */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* opcional, más efecto */
+}
+
+.slide h1 {
+  text-align: left;
+  margin: 10px 0;
+}
+
+.slide p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+button#prev,
+button#next {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 0 10px;
+  transition: background 0.3s;
+}
+
+button#prev:hover,
+button#next:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+/* footer */
+  footer{
+    background-color: black;
+    height: 30px;
+  }
+  .copy{
+    width: 100%;
+    height: auto;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Si el menú está en versión móvil */
+@media (max-width: 830px){
+  .img_header{
+    margin: auto 0;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    .menu{
+      justify-content: right;
+    }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 20px;
+    top: 70px;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    background-color: rgb(173, 173, 173);
+  }
+  .nav-menu-item:hover{
+    background-color: #ffffff;
+  }
+  .nav-menu-item{
+    width: 100%;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-menu-link {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .submenu-column {
+    position: static;
+    display: none;
+    padding: 0;
+  }
+
+  .nav-menu-item.active .submenu-column {
+    display: block;
+  }
+
+  .submenu-column ul li a {
+    padding: 10px 0 10px 15px;
+  }
+
+}

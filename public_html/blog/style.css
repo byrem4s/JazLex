@@ -6,13 +6,21 @@
 }
 
 body {
-    background-color: #F3F4F6;
+    background-color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
 }
 a{
     text-decoration: none;
 }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: #fff;
+  /* border-bottom: 1px solid #e5e7eb; */
+}
+
 .img_header {
   margin-left: 20px;
   width: 225px;
@@ -124,47 +132,151 @@ a{
 .enlace:visited{
     color: blue;
 }
+
+/*Menu servicios*/
+/* --- Sidebar de Servicios --- */
+.sidebar-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #111827;
+  text-align: center;
+}
+
+
+.menuRedirection {
+  width: 20%;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;              /* más espacio entre tarjetas */
+  border-right: 1px solid #d1d5db;
+  
+  /* que quede fijo */
+  position: sticky;
+  top: 200px;             /* se fija debajo del header */
+  align-self: flex-start; /* respeta el layout de flex */
+  /* height: fit-content; */
+}
+
+.service-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card i {
+  font-size: 22px;
+  color: #0078d4;
+  flex-shrink: 0;
+}
+
+.service-card h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: #111827;
+}
+
+.service-card p {
+  font-size: 0.85rem;
+  margin: 2px 0 0 0;
+  color: #6b7280;
+}
+
+.service-card:hover {
+  background: #e5f0ff;
+  border-color: #0078d4;
+  transform: translateX(4px);
+}
+
+
+/*cierre menu servicios*/
+.blogPublication{
+  display: flex;
+}
+
 .feed {
-    width: 70%;
+    width: 60%;
     height: auto;
-    margin: 50px auto;
-    background-color: #F3F4F6;
+    /* margin: 50px auto; */
 }
 
 .blogImg{
     margin: 0 auto;
     /* border-radius: 10px; */
-    width: 94%;
+    margin-left: 12%;
+  
 }
 
+.img1{
+      background-image: url('../assets/publication1.1.png');
+    background-position: center;
+    overflow: hidden;
+    max-width: 800px;
+    height: 600px;
+}
 .img2{
     background-image: url('../assets/publicacion1024.png');
     background-position: center;
     overflow: hidden;
-    width: 94%;
-    max-width: 1024px;
+    max-width: 800px;
     height: 600px;
 }
-
 .blogContent{
     text-align: left;
-    padding: 3% 3% 0;
+    padding-left: 12%;
+    padding-top: 2%;
+    padding-bottom: 30px;
+}
+.blogContent p {
+  max-width: 80%;
+  
 }
 
 .footerofpublication{
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1%;
+  margin-left: 12%;
+  max-width: 800px;
+}
+.footerofpublication__left {
+  font-size: 0.9rem;
+  color: #6b7280; /* gris medio */
+}
+
+.footerofpublication__right {
+  display: flex;
+  gap: 12px; /* espacio entre iconos */
 }
 .footerofpublication__time{
     color: #39393aa8;
     font-size: 1.1em;
     padding-right: 3%;
+    white-space: nowrap;
 }
-svg{
+/* svg{
     flex-shrink: 0;
     display: block;
+} */
+.footerofpublication__right svg {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.footerofpublication__right svg:hover {
+  opacity: 0.7;
 }
 
 
@@ -261,8 +373,7 @@ svg{
     position: relative;
     overflow: hidden;
     width: 100%;
-    /* height: 600px; */
-    /* background-size: cover; */
+    margin-left: 2%;
 }
 
 
@@ -493,11 +604,13 @@ svg{
     background-position: center;
     background-size: cover;
 }
+.img1{
+    background-position: center;
+    background-size: cover;
+}
 @media (max-width: 910px) {
     .img2{
         background-image: url('../assets/publicacion1.png');
-        /* background-position: center; */
-        /* background-repeat: no-repeat; */
         overflow: hidden;
         width: 94%;
         max-width: 1024px;
@@ -510,38 +623,48 @@ svg{
 
 .publication{
     background-color: #ffffff;
-    margin-bottom: 2%;
-    padding-top: 30px;
 }
 
-
-
-
-
-.titleFeed {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 35px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 24px;
-    color: #333333;
+.titleFeed{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: clamp(22px, 2.2vw, 28px);     /* más sobrio que 35px */
+  line-height: 1.3;
+  margin: 2px 0 10px 0;                    /* alinear con imagen */
+  color: #111827;                           /* un poco más oscuro */
 }
 
-.subtitleFeed {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 16px;
-    color: #333333da;
+.subtitleFeed{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+  color: var(--muted);
 }
 
-.parrafoFeed {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 16px;
-    color: #070707b6;
+.parrafoFeed{
+  font-family: 'Roboto', sans-serif;       /* unificamos tipografía */
+  font-size: 17px;                          /* -2px para densidad */
+  line-height: 1.65;
+  color: #374151;                           /* gris profesional */
+  margin: 10px 0;
+}
+.publication + .publication {
+  padding-top: 48px;
+  position: relative;
+}
+.publication + .publication::before {
+  content: "";
+  display: block;
+  width: 70%;
+  margin-left: 12%;
+  border-top: 1px solid #d1d5db;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .reveal {
@@ -579,13 +702,13 @@ svg{
         height: 300px; /* Ajustamos la altura de las imágenes en móviles */
     }
 
-    .titleFeed {
+    /* .titleFeed {
         font-size: 24px;
     }
 
     .subtitleFeed {
         font-size: 20px;
-    }
+    } */
 
     .parrafoFeed {
         font-size: 14px;
@@ -599,7 +722,7 @@ svg{
 }
 
 @media (max-width: 460px){
-    .img2{
+    .img2 .img1{
         background-size: cover;
     }
 }
