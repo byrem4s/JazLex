@@ -116,6 +116,8 @@ a{
   overflow: hidden;
   position: relative;
   margin: 0 auto;
+  aspect-ratio: 1 / 1; /* O usa height si prefieres */
+  overflow: hidden;
 }
 
 .svgclip {
@@ -123,7 +125,6 @@ a{
     height: 100%;
     display: block;
 }
-
 .gradiente {
   position: absolute;
   top: 0;
@@ -204,15 +205,15 @@ h3{
   z-index: 2;
   display: flex;
   flex-direction: column;
-
+  /* justify-content: center; */
+  /* background: linear-gradient(to right, rgba(32, 32, 32, 0.6), transparent);  */
+  /* backdrop-filter: blur(2px); */
 }
 .txtimage h1 {
   font-size: 2em;
   margin-bottom: 15px;
-  /* background-color: rgba(24, 24, 24, 0.1); */
 }
 .txtimage p {
-  background-color: rgba(24, 24, 24, 0.1);
   font-size: 1.2em;
   line-height: 1.4;
   color: white;
@@ -315,12 +316,11 @@ p{
   font-weight: 400;
   font-size: 1.4em;
   width: 60%;
-  /* padding-bottom: 50px; */
+  padding-bottom: 50px;
 }
 .infoservice{
   width: 40%;
 }
-
 .infoservice ul.infoservice-items {
   padding-left: 1.2em;
   margin-top: 0.5em;
@@ -332,6 +332,7 @@ p{
   margin-bottom: 12px;
   padding-left: 24px;
   font-size: 0.95rem;
+  color: #444
 }
 .infoservice ul.infoservice-items li::before {
   content: "✔";
@@ -350,7 +351,7 @@ p{
 .imgservice{
   width: 600px;
   height: 400px;
-  background-image: url(/assets/plc-hmi.jpg);
+  background-image: url(/assets/harmonic-analysis-services.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -453,6 +454,22 @@ button#next:hover {
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Si el menú está en versión móvil */
 @media (max-width: 830px){
   .img_header{
@@ -509,14 +526,8 @@ button#next:hover {
     padding: 10px 0 10px 15px;
   }
 
-  .contentservice {
-    flex-direction: column;
-    width: 90%;
-  }
-
-  .infoservice {
-    max-width: 100%;
-    margin-top: 20px;
+    .submenu-column ul li a {
+    padding: 10px 0 10px 15px;
   }
 
   .contentservice {

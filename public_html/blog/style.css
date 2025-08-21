@@ -222,6 +222,7 @@ header {
     overflow: hidden;
     max-width: 800px;
     height: 600px;
+    background-size: cover;
 }
 .img2{
     background-image: url('../assets/publicacion1024.png');
@@ -452,72 +453,7 @@ header {
   height: 30%;
 }
 
-/* -------------------- */
-/* 📱 Responsivo móvil */
-/* -------------------- */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: block;
-    }
-    .menu{
-      justify-content: right;
-    }
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    left: 20px;
-    top: 70px;
-    padding: 20px;
-    border-radius: 8px;
-    width: calc(100% - 40px);
-    background-color: rgb(173, 173, 173);
-  }
-  .nav-menu-item:hover{
-    background-color: #ffffff;
-  }
-  .nav-menu-item{
-    width: 100%;
-  }
 
-  .nav-menu.show {
-    display: flex;
-  }
-
-  .nav-menu-link {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .submenu-column {
-    position: static;
-    display: none;
-    padding: 0;
-  }
-
-  .nav-menu-item.active .submenu-column {
-    display: block;
-  }
-
-  .submenu-column ul li a {
-    padding: 10px 0 10px 15px;
-  }
-
-  .modal-content {
-    max-width: 95vw;
-    max-height: 80vh;
-  }
-
-  .close{
-    font-size: 30px;
-    padding: 10px;
-  }
-
-  .close {
-    top: 10px;
-    right: 15px;
-  }
-}
 
 
 .modal {
@@ -604,19 +540,6 @@ header {
     background-position: center;
     background-size: cover;
 }
-.img1{
-    background-position: center;
-    background-size: cover;
-}
-@media (max-width: 910px) {
-    .img2{
-        background-image: url('../assets/publicacion1.png');
-        overflow: hidden;
-        width: 94%;
-        max-width: 1024px;
-    }
-}
-    
 
 /* Feed de publicaciones */
 
@@ -680,7 +603,184 @@ header {
 
 /* --- MEDIA QUERIES PARA HACER EL DISEÑO RESPONSIVO --- */
 
+/* Tablet (<=1024px) */
+@media (max-width: 1024px) {
+  .blogPublication {
+    flex-direction: column;
+    align-items: center;        /* centra hijos horizontalmente */
+  }
 
+  /* Sidebar arriba y a ancho completo */
+  .menuRedirection {
+    order: -1;                  /* sube arriba aunque en el DOM esté después */
+    width: 100%;
+    position: static;
+    align-self: stretch;        /* ignora el flex-start del base */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-right: none;
+    border-bottom: 1px solid #d1d5db;
+  }
+
+  /* Contenido del post centrado y acotado */
+  .feed {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .blogImg,
+  .blogContent,
+  .footerofpublication {
+    margin-left: 0;             /* anula el 12% */
+    margin-right: 0;
+    width: 100%;
+    max-width: 800px;
+    padding-left: 0;
+  }
+
+  .blogImg {
+    margin: 0 auto;
+  }
+
+  .blogContent {
+    text-align: left;         /* título + descripción centrados */
+  }
+
+  .blogContent p {
+    max-width: 100%;
+    margin: left;
+  }
+
+  .footerofpublication {
+    justify-content: center;    /* centra iconos/time */
+    text-align: center;
+    justify-content: space-between;
+  }
+
+
+  /* Separador entre publicaciones centrado */
+  .publication + .publication::before {
+    width: 90%;
+    margin: 0 auto;
+    left: 0;
+  }
+
+  /* Slider responsive y sin desborde */
+.image-layout {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;       /* habilita scroll horizontal */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* suave en iOS */
+}
+
+.image-layout > * {
+  flex: 0 0 80%;          /* cada imagen ocupa el 80% del viewport */
+  scroll-snap-align: center;
+}
+  .main-image,
+  .side-images,
+  .side-image {
+    height: auto;
+  }
+}
+
+@media (max-width: 910px) {
+    .img2{
+        background-image: url('../assets/publicacion1.png');
+        overflow: hidden;
+        /* width: 94%; */
+        max-width: 1024px;
+    }
+}
+/* -------------------- */
+/* 📱 Responsivo móvil */
+/* -------------------- */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    .menu{
+      justify-content: right;
+    }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 20px;
+    top: 70px;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    background-color: rgb(173, 173, 173);
+  }
+  .nav-menu-item:hover{
+    background-color: #ffffff;
+  }
+  .nav-menu-item{
+    width: 100%;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-menu-link {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .submenu-column {
+    position: static;
+    display: none;
+    padding: 0;
+  }
+
+  .nav-menu-item.active .submenu-column {
+    display: block;
+  }
+
+  .submenu-column ul li a {
+    padding: 10px 0 10px 15px;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+
+  .close{
+    font-size: 30px;
+    padding: 10px;
+  }
+
+  .close {
+    top: 10px;
+    right: 15px;
+  }
+
+  .blogContent {
+    padding-left: 16px;
+  }
+  /* .menuRedirection{
+    margin-left: 16px;
+  } */
+  .blogImg{
+    width: 94%;
+  }
+  .footerofpublication{
+    padding: 0 2.5%;
+  }
+}
 /* Para pantallas menores de 767px (smartphones y tablets en modo retrato) */
 @media (max-width: 767px) {
     .etiquetas {
@@ -702,23 +802,63 @@ header {
         height: 300px; /* Ajustamos la altura de las imágenes en móviles */
     }
 
-    /* .titleFeed {
-        font-size: 24px;
-    }
-
-    .subtitleFeed {
-        font-size: 20px;
-    } */
-
-    .parrafoFeed {
+    /* .parrafoFeed {
         font-size: 14px;
-    }
+    } */
+}
+
+/* Móviles medianos (<=600px) */
+@media (max-width: 600px) {
+  .menuRedirection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .service-card {
+    width: 100%;
+  }
+  .blogImg {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    background-size: cover;
+  }
+  .blogContent {
+    padding: 10px;
+  }
+  .blogContent p {
+    max-width: 100%;
+  }
+  .footerofpublication {
+    /* flex-direction: column; */
+    align-items: flex-start;
+  }
+  .footerofpublication__right {
+    margin-top: 8px;
+  }
+  .modal-content {
+    width: 90% !important;
+  }
+}
+@media (max-width: 600px) and (min-width: 501px) {
+  .img1,
+  .img2 {
+    width: 100%;
+    height: 400px;       /* más razonable para móvil grande */
+    background-size: cover;
+    background-position: center;
+  }
+  .footerofpublication{
+    padding: 5px 0;
+  }
 }
 
 @media (max-width: 500px) {
     .blogImg{
         height: 400px;
     }
+  .footerofpublication{
+    padding: 3px 0;
+  }
 }
 
 @media (max-width: 460px){
@@ -726,3 +866,26 @@ header {
         background-size: cover;
     }
 }
+
+
+/* Móviles muy chicos (<=400px) */
+@media (max-width: 400px) {
+  .titleFeed {
+    font-size: 18px;
+  }
+  .service-card h3 {
+    font-size: 0.9rem;
+  }
+  .service-card p {
+    font-size: 0.75rem;
+  }
+  .blogImg {
+    max-height: 220px;
+  }
+}
+
+/* 0) Seguridad: no más scroll horizontal */
+html, body { overflow-x: hidden; }
+
+/* 1) Slider: no empujes el layout */
+/* .slider { margin-left: 0; } */
